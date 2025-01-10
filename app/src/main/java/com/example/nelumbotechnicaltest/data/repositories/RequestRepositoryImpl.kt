@@ -12,4 +12,8 @@ class RequestRepositoryImpl @Inject constructor(
     override suspend fun getRequests(limit: Int, order: String): List<Request> {
         return remoteDataSource.fetchRequests(limit, order)
     }
+
+    override suspend fun getDetailRequest(idRequest: String): Request {
+        return remoteDataSource.fetchDetailRequest(idRequest)
+    }
 }

@@ -9,4 +9,8 @@ class RequestRemoteDataSource @Inject constructor(
     suspend fun fetchRequests(limit: Int, order: String): List<Request> {
         return requestApiClient.getRequests(limit, order)
     }
+
+    suspend fun fetchDetailRequest(idRequest: String): Request {
+        return requestApiClient.getDetailRequest(idRequest)
+    }
 }

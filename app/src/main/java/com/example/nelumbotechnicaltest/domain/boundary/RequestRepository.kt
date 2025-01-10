@@ -4,4 +4,5 @@ import com.example.nelumbotechnicaltest.data.models.Request
 
 interface RequestRepository {
     suspend fun getRequests(limit: Int, order: String): List<Request>
+    suspend fun getDetailRequest(idRequest: String): Request
 }

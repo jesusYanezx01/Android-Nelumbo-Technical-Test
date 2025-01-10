@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.nelumbotechnicaltest.ui.Detail.DetailScreen
 import com.example.nelumbotechnicaltest.ui.home.HomeScreen
 import com.example.nelumbotechnicaltest.ui.login.LoginScreen
@@ -24,7 +26,13 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = "login") {
                     composable("login") { LoginScreen(navController) }
                     composable("home") { HomeScreen(navController) }
-                    composable("detail") { DetailScreen(navController) }
+                    composable(
+                        "detail/{id}",
+                        arguments = listOf(navArgument("id") { type = NavType.StringType })
+                    ) { backStackEntry ->
+                        val id = backStackEntry.arguments?.getString("id")
+                        DetailScreen(navController, id)
+                    }
                 }
             }
         }

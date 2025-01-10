@@ -54,16 +54,14 @@ fun RequestItem(request: Request, navController: NavController) {
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navController.navigate("detail")
-            },
+                navController.navigate("detail/${request.id}")
+            }
     ) {
-
-
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "Nombre: ${request.name ?: "No nombre"}")
             Text(text = "Descripcion: ${request.description ?: "No descripcion"}")
             Text(text = "Estado prioridad: ${request.priority?.name}")
-            Text(text = "Estado actual: ${request.status.description}")
+            Text(text = "Estado actual: ${request.status?.description}")
             Text(text = "area: ${request.area}")
             Text(text = "departamento: ${request.department}")
             Text(text = "creador: ${request.createdByUser?.firstName ?: "N.N"} ${request.createdByUser?.lastName}")
