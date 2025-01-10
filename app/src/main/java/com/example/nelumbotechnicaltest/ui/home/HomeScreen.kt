@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.nelumbotechnicaltest.data.models.Request
+import com.example.nelumbotechnicaltest.ui.navigation.Screens
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
@@ -54,7 +55,7 @@ fun RequestItem(request: Request, navController: NavController) {
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navController.navigate("detail/${request.id}")
+                navController.navigate("${Screens.REQUEST_DETAIL.title}/${request.id}")
             }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {

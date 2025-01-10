@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.nelumbotechnicaltest.ui.navigation.Screens
 
 @Composable
 fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltViewModel()) {
@@ -30,7 +31,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
     LaunchedEffect(loginState.value) {
         loginState.value?.let { result ->
             if (result.isSuccess) {
-                navController.navigate("home")
+                navController.navigate(Screens.HOME.title)
                 viewModel.resetLoginState()
             }
         }
