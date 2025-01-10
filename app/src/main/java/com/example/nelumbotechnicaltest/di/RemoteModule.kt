@@ -1,6 +1,8 @@
 package com.example.nelumbotechnicaltest.di
 
+import com.example.nelumbotechnicaltest.data.localDataSource.auth.AuthLocalDataSource
 import com.example.nelumbotechnicaltest.data.remoteDataSource.auth.AuthApiClient
+import com.example.nelumbotechnicaltest.data.remoteDataSource.interceptor.AuthInterceptor
 import com.example.nelumbotechnicaltest.data.remoteDataSource.request.RequestApiClient
 import dagger.Module
 import dagger.Provides
@@ -17,14 +19,15 @@ object RemoteModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideAuthInterceptor(authLocalDataSource: AuthLocalDataSource): AuthInterceptor {
+        return AuthInterceptor(authLocalDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val request = chain.request().newBuilder()
-                    .addHeader("Authorization", "Bearer myToken")
-                    .build()
-                chain.proceed(request)
-            }
+            .addInterceptor(authInterceptor)
             .build()
     }
 

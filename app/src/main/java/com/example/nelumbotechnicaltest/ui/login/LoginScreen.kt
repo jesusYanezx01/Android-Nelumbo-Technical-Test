@@ -11,6 +11,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,6 +26,15 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val loginState = viewModel.loginState.collectAsState()
+
+    LaunchedEffect(loginState.value) {
+        loginState.value?.let { result ->
+            if (result.isSuccess) {
+                navController.navigate("home")
+                viewModel.resetLoginState()
+            }
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -60,9 +70,8 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
         Spacer(modifier = Modifier.height(16.dp))
 
         loginState.value?.let { result ->
-            when {
-                result.isSuccess -> Text("Login exitoso", color = Color.Green)
-                result.isFailure -> Text(
+            if (result.isFailure) {
+                Text(
                     "Error: ${result.exceptionOrNull()?.message ?: "Desconocido"}",
                     color = Color.Red
                 )

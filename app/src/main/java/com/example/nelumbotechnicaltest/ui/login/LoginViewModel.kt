@@ -23,4 +23,8 @@ class LoginViewModel @Inject constructor(
             _loginState.value = result
         }
     }
+
+    fun resetLoginState() {
+        _loginState.value = null
+    }
 }
