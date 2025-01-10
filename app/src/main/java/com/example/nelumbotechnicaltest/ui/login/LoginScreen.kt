@@ -9,26 +9,64 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltViewModel()) {
+    val email = remember { mutableStateOf("") }
+    val password = remember { mutableStateOf("") }
+    val loginState = viewModel.loginState.collectAsState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Login Screen")
+        TextField(
+            value = email.value,
+            onValueChange = { email.value = it },
+            label = { Text("Correo electrónico") },
+            modifier = Modifier.fillMaxWidth()
+        )
         Spacer(modifier = Modifier.height(16.dp))
+
+        TextField(
+            value = password.value,
+            onValueChange = { password.value = it },
+            label = { Text("Contraseña") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
         Button(
-            onClick = { navController.navigate("home") },
+            onClick = {
+                viewModel.login(email.value, password.value)
+            },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Login")
+            Text("Ingresar")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        loginState.value?.let { result ->
+            when {
+                result.isSuccess -> Text("Login exitoso", color = Color.Green)
+                result.isFailure -> Text(
+                    "Error: ${result.exceptionOrNull()?.message ?: "Desconocido"}",
+                    color = Color.Red
+                )
+            }
         }
     }
 }
