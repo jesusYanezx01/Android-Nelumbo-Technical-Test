@@ -18,13 +18,19 @@ class DetailViewModel @Inject constructor(
     private val _detail = MutableStateFlow<Request?>(null)
     val detail: StateFlow<Request?> get() = _detail
 
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> get() = _error
+
     fun loadDetail(requestId: String) {
         viewModelScope.launch {
-            try {
-                val detail = fetchDetailRequestUseCase(requestId)
+            val result = fetchDetailRequestUseCase.execute(requestId)
+
+            result.onSuccess { detail ->
                 _detail.value = detail
-            } catch (e: Exception) {
-                e.printStackTrace()
+                _error.value = null
+            }.onFailure { exception ->
+                _detail.value = null
+                _error.value = exception.message
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.nelumbotechnicaltest.domain
+package com.example.nelumbotechnicaltest.domain.helpers
 
 import android.annotation.SuppressLint
 import java.time.Instant

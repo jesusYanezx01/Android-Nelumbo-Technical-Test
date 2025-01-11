@@ -49,11 +49,15 @@ import com.example.nelumbotechnicaltest.ui.navigation.CustomBottomApp
 import com.example.nelumbotechnicaltest.ui.navigation.CustomTopAppBar
 
 @Composable
-fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(
+    navController: NavHostController,
+    viewModel: HomeViewModel = hiltViewModel()
+
+) {
     val requests by viewModel.requests.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.loadRequests()
+        viewModel.login()
     }
 
     Scaffold(

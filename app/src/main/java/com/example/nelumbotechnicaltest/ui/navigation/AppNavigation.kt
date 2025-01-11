@@ -9,15 +9,12 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.nelumbotechnicaltest.ui.detailRequest.DetailScreen
 import com.example.nelumbotechnicaltest.ui.home.HomeScreen
-import com.example.nelumbotechnicaltest.ui.login.LoginScreen
 
 
 @Composable
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
 
-    NavHost(navController = navController, startDestination = Screens.LOGIN.title) {
-
-        composable(Screens.LOGIN.title) { LoginScreen(navController) }
+    NavHost(navController = navController, startDestination = Screens.HOME.title) {
 
         composable(Screens.HOME.title) { HomeScreen(navController) }
 
