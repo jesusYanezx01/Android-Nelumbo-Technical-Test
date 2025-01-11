@@ -17,9 +17,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.nelumbotechnicaltest.R
 import com.example.nelumbotechnicaltest.ui.navigation.Screens
 
 @Composable
@@ -46,7 +48,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
         TextField(
             value = email.value,
             onValueChange = { email.value = it },
-            label = { Text("Correo electrónico") },
+            label = { Text(stringResource(R.string.email)) },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -54,7 +56,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
         TextField(
             value = password.value,
             onValueChange = { password.value = it },
-            label = { Text("Contraseña") },
+            label = { Text(stringResource(R.string.password)) },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -65,7 +67,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Ingresar")
+            Text(stringResource(R.string.enter))
         }
 
         Spacer(modifier = Modifier.height(16.dp))

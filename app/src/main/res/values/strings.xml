@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Nelumbo Technical Test</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="enter">Ingresar</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="my_profile">Mi perfil</string>
+    <string name="return_previous_screen">Volver a la pantalla anterior</string>
+    <string name="see_detail">Ver detalle</string>
+    <string name="solver">"Solucionador: "</string>
+    <string name="supplier">"Proveedor: "</string>
+    <string name="creator">"Creador: "</string>
+    <string name="unit">"Unidad: "</string>
+    <string name="department">"Departamento: "</string>
+    <string name="area">"Área: "</string>
+    <string name="requested_the">"Solicitada el: "</string>
+    <string name="sort">Ordenar</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="add">Agregar</string>
+    <string name="filter">Filtrar</string>
+    <string name="filter_by">Filtrar por</string>
+    <string name="all_stores">Todas las tiendas</string>
+    <string name="stores">Tiendas</string>
+    <string name="n_a">N/A</string>
 </resources>

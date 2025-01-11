@@ -64,7 +64,7 @@ fun CustomTopAppBar(navController: NavHostController) {
                         }) {
                             Icon(
                                 imageVector = Icons.Outlined.ArrowBackIosNew,
-                                contentDescription = null,
+                                contentDescription = stringResource(R.string.return_previous_screen),
                                 tint = Color.White
                             )
                         }
@@ -78,14 +78,14 @@ fun CustomTopAppBar(navController: NavHostController) {
                     modifier = Modifier
                         .padding(horizontal = 8.dp, vertical = 4.dp),
                     imageVector = Icons.Default.AccountCircle,
-                    contentDescription = "Mi perfil",
+                    contentDescription = stringResource(R.string.my_profile),
                     tint = Color.White
                 )
                 Icon(
                     modifier = Modifier
                         .padding(horizontal = 8.dp, vertical = 4.dp),
                     imageVector = Icons.Default.Notifications,
-                    contentDescription = "Notificaciones",
+                    contentDescription = stringResource(R.string.notifications),
                     tint = Color.White
                 )
             } else if (currentRoute.startsWith(Screens.REQUEST_DETAIL.title)) {
@@ -102,7 +102,7 @@ fun CustomTopAppBar(navController: NavHostController) {
                     IconButton(onClick = {}) {
                         Icon(
                             imageVector = Icons.Default.Notifications,
-                            contentDescription = "Notificaciones",
+                            contentDescription = stringResource(R.string.notifications),
                             tint = Color.White
                         )
                     }

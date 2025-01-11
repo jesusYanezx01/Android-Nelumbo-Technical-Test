@@ -42,15 +42,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Paint
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -58,14 +54,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.text.color
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.example.nelumbotechnicaltest.R
 import com.example.nelumbotechnicaltest.data.models.Request
 import com.example.nelumbotechnicaltest.domain.AppTimeUtil
 import com.example.nelumbotechnicaltest.ui.navigation.Screens
-import kotlin.text.append
 
 @Composable
 fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hiltViewModel()) {
@@ -94,11 +89,11 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hilt
                     Icon(
                         modifier = Modifier.padding(start = 8.dp),
                         imageVector = Icons.Default.Store,
-                        contentDescription = "Tiendas",
+                        contentDescription = stringResource(R.string.stores),
                         tint = Color.White
                     )
                     Text(
-                        text = "Todas las tiendas",
+                        text = stringResource(R.string.all_stores),
                         modifier = Modifier.padding(4.dp),
                         color = Color.White
                     )
@@ -106,7 +101,7 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hilt
                     Icon(
                         modifier = Modifier.padding(end = 8.dp),
                         imageVector = Icons.AutoMirrored.Outlined.ArrowForwardIos,
-                        contentDescription = "Todas las tiendas",
+                        contentDescription = stringResource(R.string.all_stores),
                         tint = Color.White
                     )
                 }
@@ -142,14 +137,14 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hilt
 
                     ) {
                         Text(
-                            text = "Filtrar por",
+                            text = stringResource(R.string.filter_by),
                             modifier = Modifier.padding(4.dp),
                             color = Color.Black
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Icon(
                             imageVector = Icons.Default.FilterList,
-                            contentDescription = "Filtrar",
+                            contentDescription = stringResource(R.string.filter),
                             tint = Color.Black,
                             modifier = Modifier.size(16.dp)
                         )
@@ -165,7 +160,7 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hilt
                     ) {
                         Icon(
                             imageVector = Icons.Default.Add,
-                            contentDescription = "Agregar",
+                            contentDescription = stringResource(R.string.add),
                             tint = Color.White
                         )
                     }
@@ -176,14 +171,14 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hilt
                             .padding(start = 4.dp, end = 8.dp)
                     ) {
                         Text(
-                            text = "Ordenar por",
+                            text = stringResource(R.string.sort_by),
                             modifier = Modifier.padding(4.dp),
                             color = Color.Black
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.Sort,
-                            contentDescription = "Ordenar",
+                            contentDescription = stringResource(R.string.sort),
                             modifier = Modifier.size(16.dp),
                             tint = Color.Black
                         )
@@ -261,7 +256,7 @@ fun RequestItem(request: Request, navController: NavController) {
                         .padding(horizontal = 8.dp, vertical = 4.dp)
                 ) {
                     Text(
-                        text = request.type ?: "N/A",
+                        text = request.type ?: stringResource(R.string.n_a),
                         color = Color.White
                     )
                 }
@@ -269,7 +264,7 @@ fun RequestItem(request: Request, navController: NavController) {
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append(request.name ?: "N/A") }
+                    withStyle(boldStyle) { append(request.name ?: stringResource(R.string.n_a)) }
                 },
                 fontSize = 24.sp,
                 maxLines = 1,
@@ -287,7 +282,7 @@ fun RequestItem(request: Request, navController: NavController) {
                         .padding(4.dp)
                 ) {
                     Text(
-                        text = request.priority?.name ?: "N/A",
+                        text = request.priority?.name ?: stringResource(R.string.n_a),
                         color = Color.White,
                         fontSize = 12.sp
                     )
@@ -310,7 +305,7 @@ fun RequestItem(request: Request, navController: NavController) {
                         .padding(4.dp)
                 ) {
                     Text(
-                        text = request.status?.description ?: "N/A",
+                        text = request.status?.description ?: stringResource(R.string.n_a),
                         color = MaterialTheme.colorScheme.primary,
                         fontSize = 12.sp
                     )
@@ -319,7 +314,7 @@ fun RequestItem(request: Request, navController: NavController) {
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append("Solicitada el: ") }
+                    withStyle(boldStyle) { append(stringResource(R.string.requested_the)) }
                     withStyle(normalStyle) { append(AppTimeUtil.formatIsoDateToCustom(request.createTime)) }
                 },
                 fontSize = 16.sp,
@@ -327,44 +322,44 @@ fun RequestItem(request: Request, navController: NavController) {
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append("Área: ") }
-                    withStyle(normalStyle) { append(request.area?.name ?: "N/A") }
+                    withStyle(boldStyle) { append(stringResource(R.string.area)) }
+                    withStyle(normalStyle) { append(request.area?.name ?: stringResource(R.string.n_a)) }
                 },
                 fontSize = 16.sp
             )
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append("Departamento: ") }
-                    withStyle(normalStyle) { append(request.department?.name ?: "N/A") }
+                    withStyle(boldStyle) { append(stringResource(R.string.department)) }
+                    withStyle(normalStyle) { append(request.department?.name ?: stringResource(R.string.n_a)) }
                 },
                 fontSize = 16.sp
             )
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append("Unidad: ") }
-                    withStyle(normalStyle) { append(request.store?.name ?: "N/A") }
+                    withStyle(boldStyle) { append(stringResource(R.string.unit)) }
+                    withStyle(normalStyle) { append(request.store?.name ?: stringResource(R.string.n_a)) }
                 },
                 fontSize = 16.sp
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append("Creador: ") }
-                    withStyle(normalStyle) { append("${request.createdByUser?.firstName ?: "N/A"} ${request.createdByUser?.lastName ?: "N/A"}") }
+                    withStyle(boldStyle) { append(stringResource(R.string.creator)) }
+                    withStyle(normalStyle) { append("${request.createdByUser?.firstName ?: stringResource(R.string.n_a)} ${request.createdByUser?.lastName ?: stringResource(R.string.n_a)}") }
                 },
                 fontSize = 16.sp
             )
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append("Proveedor: ") }
-                    withStyle(normalStyle) { append("${request.department?.userManage?.firstName ?: "N/A"} ${request.department?.userManage?.lastName ?: "N/A"}") }
+                    withStyle(boldStyle) { append(stringResource(R.string.supplier)) }
+                    withStyle(normalStyle) { append("${request.department?.userManage?.firstName ?: stringResource(R.string.n_a)} ${request.department?.userManage?.lastName ?: stringResource(R.string.n_a)}") }
                 },
                 fontSize = 16.sp
             )
             Text(
                 text = buildAnnotatedString {
-                    withStyle(boldStyle) { append("Solucionador: ") }
-                    withStyle(normalStyle) { append(request.userAttendingId?.toString() ?: "N/A") }
+                    withStyle(boldStyle) { append(stringResource(R.string.solver)) }
+                    withStyle(normalStyle) { append(request.userAttendingId?.toString() ?: stringResource(R.string.n_a)) }
                 },
                 fontSize = 16.sp
             )
@@ -376,7 +371,7 @@ fun RequestItem(request: Request, navController: NavController) {
                     .align(Alignment.CenterHorizontally),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text(text = "Ver detalle")
+                Text(text = stringResource(R.string.see_detail))
             }
         }
     }
