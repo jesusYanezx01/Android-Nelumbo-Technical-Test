@@ -39,12 +39,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.nelumbotechnicaltest.data.models.Request
 import com.example.nelumbotechnicaltest.domain.AppTimeUtil
 import com.example.nelumbotechnicaltest.ui.navigation.Screens
 
 @Composable
-fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hiltViewModel()) {
     val requests by viewModel.requests.collectAsState()
 
     LaunchedEffect(Unit) {
@@ -56,7 +57,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
             Column(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                CustomTopAppBar()
+                CustomTopAppBar(navController)
 
                 Row(
                     modifier = Modifier
@@ -131,9 +132,13 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                         .padding(horizontal = 16.dp)
                 ) {
                     if (requests.isEmpty()) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
-                        )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            CircularProgressIndicator()
+                        }
                     } else {
                         LazyColumn(modifier = Modifier.fillMaxSize()) {
                             items(requests) { request ->
