@@ -51,6 +51,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.nelumbotechnicaltest.R
 import com.example.nelumbotechnicaltest.ui.common.components.OptionRow
+import com.example.nelumbotechnicaltest.ui.common.error.ErrorDialog
 import com.example.nelumbotechnicaltest.ui.navigation.CustomTopAppBar
 
 @Composable
@@ -59,6 +60,8 @@ fun DetailScreen(
     requestId: String?,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
+    val detail by viewModel.detail.collectAsState()
+    val errorState by viewModel.error.collectAsState()
 
     LaunchedEffect(requestId) {
         if (requestId != null) {
@@ -66,7 +69,11 @@ fun DetailScreen(
         }
     }
 
-    val detail by viewModel.detail.collectAsState()
+    if (errorState != null) {
+        ErrorDialog(errorMessage = errorState ?: stringResource(R.string.unknown_error)) {
+            navController.popBackStack()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -154,7 +161,7 @@ fun DetailScreen(
                                 Spacer(modifier = Modifier.height(8.dp))
 
                                 Text(
-                                    text = "#${detail?.id} - ${detail?.name}",
+                                    text = "#${detail?.id} - ${detail?.name ?: stringResource(R.string.n_a)}",
                                     color = Color.White,
                                     fontSize = 32.sp,
                                     fontWeight = FontWeight.Bold,
@@ -217,7 +224,7 @@ fun DetailScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "15 Días Transcurridos",
+                                text = stringResource(R.string.days_elapsed),
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(horizontal = 16.dp),
@@ -228,14 +235,14 @@ fun DetailScreen(
                         }
 
                         Text(
-                            text = "Descripción",
+                            text = stringResource(R.string.description),
                             modifier = Modifier
                                 .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
                         )
                         Text(
-                            text = detail?.description ?: "N/A",
+                            text = detail?.description ?: stringResource(R.string.n_a),
                             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
                         )
                         Spacer(modifier = Modifier.height(8.dp))
@@ -244,11 +251,11 @@ fun DetailScreen(
                             modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            OptionRow("Evidencias", Icons.Default.AttachFile, Color(0xFF4a01c4))
-                            OptionRow("Opciones avanzadas", Icons.AutoMirrored.Filled.ArrowForward)
-                            OptionRow("Informe de folio", Icons.Default.Visibility)
+                            OptionRow(stringResource(R.string.evidence), Icons.Default.AttachFile, Color(0xFF4a01c4))
+                            OptionRow(stringResource(R.string.advanced_options), Icons.AutoMirrored.Filled.ArrowForward)
+                            OptionRow(stringResource(R.string.folio_report), Icons.Default.Visibility)
                             OptionRow(
-                                "Comentarios",
+                                stringResource(R.string.comments),
                                 Icons.AutoMirrored.Filled.ArrowForward,
                                 notificationCount = 1
                             )
@@ -263,7 +270,7 @@ fun DetailScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "Historial",
+                                text = stringResource(R.string.history),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
                             )
@@ -291,7 +298,7 @@ fun DetailScreen(
                                     .padding(16.dp)
                             ) {
                                 Text(
-                                    text = "Pedir cotización",
+                                    text = stringResource(R.string.ask_for_quote),
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color(0xFF1976D2)
@@ -300,7 +307,10 @@ fun DetailScreen(
                                 Spacer(modifier = Modifier.height(8.dp))
 
                                 Text(
-                                    text = "Proveedor: ${detail?.department?.userManage?.firstName ?: "N/A"} ${detail?.department?.userManage?.lastName ?: "N/A"}",
+                                    text = stringResource(R.string.supplier) +
+                                            "${detail?.department?.name ?: stringResource(R.string.n_a)} " +
+                                            "${detail?.department?.userManage?.firstName ?: stringResource(R.string.n_a)} " +
+                                            (detail?.department?.userManage?.lastName ?: stringResource(R.string.n_a)),
                                     color = Color(0xFF757575),
                                     fontSize = 18.sp
                                 )
@@ -314,7 +324,7 @@ fun DetailScreen(
                                     shape = RoundedCornerShape(8.dp)
                                 ) {
                                     Text(
-                                        text = "Reasignar proveedor",
+                                        text = stringResource(R.string.reassign_supplier),
                                         color = Color(0xFF1976D2),
                                         fontSize = 18.sp
                                     )
@@ -334,7 +344,7 @@ fun DetailScreen(
                                     )
                                 ) {
                                     Text(
-                                        text = "Pedir cotización",
+                                        text = stringResource(R.string.ask_for_quote),
                                         fontSize = 18.sp
                                     )
                                 }

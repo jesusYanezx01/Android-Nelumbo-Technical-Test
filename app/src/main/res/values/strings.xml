@@ -23,4 +23,17 @@
     <string name="stores">Tiendas</string>
     <string name="n_a">N/A</string>
     <string name="see_more">Ver más</string>
+    <string name="ask_for_quote">Pedir cotización</string>
+    <string name="reassign_supplier">Reasignar proveedor</string>
+    <string name="history">Historial</string>
+    <string name="comments">Comentarios</string>
+    <string name="folio_report">Informe de folio</string>
+    <string name="advanced_options">Opciones avanzadas</string>
+    <string name="evidence">Evidencias</string>
+    <string name="description">Descripción</string>
+    <string name="days_elapsed">15 Días Transcurridos</string>
+    <string name="unknown_error">Error desconocido</string>
+    <string name="error">Error</string>
+    <string name="error_ocurred">Ocurrió un error: %1$s</string>
+    <string name="back">Volver</string>
 </resources>
