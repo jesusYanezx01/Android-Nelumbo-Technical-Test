@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.nelumbotechnicaltest.ui.navigation.AppNavigation
-import com.example.nelumbotechnicaltest.ui.theme.NelumboTechnicalTestTheme
+import com.example.nelumbotechnicaltest.ui.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NelumboTechnicalTestTheme {
+            AppTheme {
                 AppNavigation()
             }
         }
