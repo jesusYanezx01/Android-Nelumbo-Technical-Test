@@ -3,7 +3,6 @@ package com.example.nelumbotechnicaltest.ui.detailRequest
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,7 +22,6 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.AttachFile
 import androidx.compose.material.icons.filled.DoubleArrow
 import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
@@ -42,11 +40,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -54,7 +50,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.nelumbotechnicaltest.R
-import com.example.nelumbotechnicaltest.ui.home.CustomTopAppBar
+import com.example.nelumbotechnicaltest.ui.common.components.OptionRow
+import com.example.nelumbotechnicaltest.ui.navigation.CustomTopAppBar
 
 @Composable
 fun DetailScreen(
@@ -350,48 +347,4 @@ fun DetailScreen(
             }
         }
     )
-}
-
-@Composable
-fun OptionRow(title: String, imageVector: ImageVector, color: Color? = null, notificationCount: Int? = null) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Row(
-            modifier = Modifier
-                .shadow(
-                    elevation = 4.dp,
-                    shape = RoundedCornerShape(4.dp)
-                )
-                .background(
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .height(56.dp)
-                .clickable { },
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = title,
-                modifier = Modifier
-                    .padding(start = 16.dp),
-                fontSize = 16.sp
-            )
-            notificationCount?.let {
-                Spacer(modifier = Modifier.width(8.dp))
-                Badge { Text(it.toString()) }
-            }
-            Spacer(modifier = Modifier.weight(1f))
-            Icon(imageVector = imageVector,
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(end = 16.dp),
-                tint = color ?: Color.Unspecified
-            )
-        }
-    }
 }

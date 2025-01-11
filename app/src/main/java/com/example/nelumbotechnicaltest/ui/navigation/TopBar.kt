@@ -1,4 +1,4 @@
-package com.example.nelumbotechnicaltest.ui.home
+package com.example.nelumbotechnicaltest.ui.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.nelumbotechnicaltest.R
-import com.example.nelumbotechnicaltest.ui.navigation.Screens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
