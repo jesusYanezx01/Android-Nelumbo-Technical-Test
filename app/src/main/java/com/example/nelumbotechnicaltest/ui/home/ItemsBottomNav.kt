@@ -9,29 +9,25 @@ import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class ItemsBottomNav(
     val icon: ImageVector,
-    val title: String,
-    val route: String
+    val title: String
 ){
     data object ItemPrincipal : ItemsBottomNav(
         Icons.Default.CheckCircle,
-        "principal",
-        "principal")
+        "principal"
+    )
 
     data object ItemCalendar: ItemsBottomNav(
         Icons.Default.CalendarToday,
-        "Agenda",
-        "calendar"
+        "Agenda"
     )
 
     data object ItemStore : ItemsBottomNav(
         Icons.Default.Store,
-        "Tiendas",
-        "store"
+        "Tiendas"
     )
 
     data object ItemFolder : ItemsBottomNav(
         Icons.Default.Folder,
-        "Folios",
-        "folder"
+        "Folios"
     )
 }
