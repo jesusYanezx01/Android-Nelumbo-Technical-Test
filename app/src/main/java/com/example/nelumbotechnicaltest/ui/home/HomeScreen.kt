@@ -112,7 +112,8 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hilt
                                 ),
                                 strokeWidth = strokeWidth
                             )
-                        },
+                        }
+                        .background(color = MaterialTheme.colorScheme.onPrimary),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -180,6 +181,7 @@ fun HomeScreen(navController: NavHostController, viewModel: HomeViewModel = hilt
                 modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()
+                    .background(color = MaterialTheme.colorScheme.onPrimary)
             ) {
                 Column(
                     modifier = Modifier

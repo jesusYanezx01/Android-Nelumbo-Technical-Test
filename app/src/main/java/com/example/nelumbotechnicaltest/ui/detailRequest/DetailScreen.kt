@@ -73,20 +73,18 @@ fun DetailScreen(
             CustomTopAppBar(navController)
         },
         content = { innerPadding ->
-            if (detail == null) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
+            Box(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
+                    .background(
+                        color = MaterialTheme.colorScheme.onPrimary,
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                if (detail == null) {
                     CircularProgressIndicator()
-                }
-            } else {
-                Box(
-                    modifier = Modifier
-                        .padding(innerPadding)
-                        .fillMaxSize()
-                ) {
+                } else {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -109,7 +107,7 @@ fun DetailScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(horizontal = 24.dp, vertical = 16.dp),
-                                ) {
+                            ) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Box(
                                         modifier = Modifier
@@ -197,7 +195,7 @@ fun DetailScreen(
                                             color = Color.White,
                                             fontSize = 16.sp,
                                             fontWeight = FontWeight.Bold,
-                                            )
+                                        )
                                         Spacer(modifier = Modifier.width(4.dp))
                                         Icon(
                                             imageVector = Icons.Default.DoubleArrow,
@@ -235,7 +233,7 @@ fun DetailScreen(
                                 .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            )
+                        )
                         Text(
                             text = detail?.description ?: "N/A",
                             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
