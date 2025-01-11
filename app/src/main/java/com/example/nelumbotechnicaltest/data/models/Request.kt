@@ -14,5 +14,6 @@ data class Request(
     val category: Category?,
     val subcategory: SubCategory?,
     val createdByUser: User?,
-    val reportFolioUserAssign: List<User?>?
+    val reportFolioUserAssign: List<User?>?,
+    val userAttendingId: Int?,
 )

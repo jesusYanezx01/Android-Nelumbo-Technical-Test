@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.nelumbotechnicaltest.ui.Detail.DetailScreen
+import com.example.nelumbotechnicaltest.ui.detailRequest.DetailScreen
 import com.example.nelumbotechnicaltest.ui.home.HomeScreen
 import com.example.nelumbotechnicaltest.ui.login.LoginScreen
 

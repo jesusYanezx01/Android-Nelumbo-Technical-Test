@@ -1,4 +1,4 @@
-package com.example.nelumbotechnicaltest.ui.Detail
+package com.example.nelumbotechnicaltest.ui.detailRequest
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

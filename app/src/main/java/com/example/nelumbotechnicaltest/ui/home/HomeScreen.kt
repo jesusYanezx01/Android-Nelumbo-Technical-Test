@@ -215,17 +215,17 @@ fun RequestItem(request: Request, navController: NavController) {
                 text = "Departamento: ${request.department?.name}",
             )
             Text(
-                text = "Unidad:",
+                text = "Unidad: ${request.store?.name}",
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Creador: ${request.createdByUser?.firstName} ${request.createdByUser?.lastName}",
             )
             Text(
-                text = "Proveedor:",
+                text = "Proveedor: ${request.department?.userManage?.firstName ?: "N/A"} ${request.department?.userManage?.lastName ?: "N/A"}"
             )
             Text(
-                text = "Solucionador:",
+                text = "Solucionador: ${request.userAttendingId ?: "N/A"}",
             )
             Spacer(modifier = Modifier.height(8.dp))
             Button(
