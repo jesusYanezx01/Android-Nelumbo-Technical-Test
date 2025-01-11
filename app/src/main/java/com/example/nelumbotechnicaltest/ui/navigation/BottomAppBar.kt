@@ -8,7 +8,11 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.unit.dp
 import com.example.nelumbotechnicaltest.ui.home.ItemsBottomNav
 
 @Composable
@@ -22,6 +26,7 @@ fun CustomBottomApp() {
     )
 
     BottomAppBar(
+        modifier = Modifier.shadow(16.dp, shape = RectangleShape),
         containerColor = Color.White,
         content = {
             NavigationBar(
@@ -40,14 +45,14 @@ fun CustomBottomApp() {
                         label = {
                             Text(
                                 text = item.title,
-                                color = if (item == ItemsBottomNav.ItemFolder) Color(0xFF1976D2) else Color(0xFF757575)
+                                color = Color(0xFF1976D2)
                             )
                         },
                         alwaysShowLabel = true,
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF1976D2),
-                            unselectedIconColor = Color(0xFF757575),
-                            indicatorColor = Color.Transparent
+                            unselectedIconColor = Color(0xFF1976D2),
+                            indicatorColor = Color(0xFF518EC5).copy(0.5f)
                         )
                     )
                 }
