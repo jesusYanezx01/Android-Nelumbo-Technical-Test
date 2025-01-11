@@ -1,5 +1,6 @@
 package com.example.nelumbotechnicaltest.ui.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.Add
@@ -38,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.nelumbotechnicaltest.data.models.Request
+import com.example.nelumbotechnicaltest.domain.AppTimeUtil
 import com.example.nelumbotechnicaltest.ui.navigation.Screens
 
 @Composable
@@ -152,25 +155,57 @@ fun RequestItem(request: Request, navController: NavController) {
             .padding(vertical = 8.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "# ${request.id}")
+            Row {
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                ) {
+                    Text(text = "# ${request.id}")
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                Box(
+                    modifier = Modifier
+                        .background(color = Color.LightGray, shape = RoundedCornerShape(8.dp))
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = request.type ?: "N/A",
+                        color = Color.Black
+                    )
+                }
+            }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = request.name ?: "No nombre",
+                text = request.name ?: "N/A",
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(4.dp))
             Row {
-                Text(
-                    text = "Prioridad: ${request.priority?.name ?: "N/A"}",
-                )
+                Box(
+                    modifier = Modifier
+                        .background(color = Color.LightGray, shape = RoundedCornerShape(8.dp))
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = request.priority?.name ?: "N/A",
+                        color = Color.Black
+                    )
+                }
                 Spacer(modifier = Modifier.width(16.dp))
-                Text(
-                    text = "Estado: ${request.status?.description ?: "N/A"}",
-                )
+                Box(
+                    modifier = Modifier
+                        .background(color = Color.LightGray, shape = RoundedCornerShape(8.dp))
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = request.status?.description ?: "N/A",
+                        color = Color.Black
+                    )
+                }
             }
             Text(
-                text = "Solicitada el: ",
+                text = "Solicitada el: ${AppTimeUtil.formatIsoDateToCustom(request.createTime)} ",
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -184,7 +219,7 @@ fun RequestItem(request: Request, navController: NavController) {
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Creador:",
+                text = "Creador: ${request.createdByUser?.firstName} ${request.createdByUser?.lastName}",
             )
             Text(
                 text = "Proveedor:",
