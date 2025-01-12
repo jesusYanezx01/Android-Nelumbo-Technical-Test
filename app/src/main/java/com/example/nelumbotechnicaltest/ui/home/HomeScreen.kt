@@ -54,10 +54,10 @@ fun HomeScreen(
     navController: NavHostController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    val requests by viewModel.requests.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.login(login = Login())
+        viewModel.login(Login())
     }
 
     Scaffold(
@@ -184,7 +184,7 @@ fun HomeScreen(
                         .fillMaxSize()
                         .padding(horizontal = 16.dp)
                 ) {
-                    if (requests.isNullOrEmpty()) {
+                    if (uiState.requests.isNullOrEmpty()) {
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
@@ -193,7 +193,7 @@ fun HomeScreen(
                         }
                     } else {
                         LazyColumn(modifier = Modifier.fillMaxSize()) {
-                            items(requests!!) { request ->
+                            items(uiState.requests!!) { request ->
                                 RequestItem(request = request, navController = navController)
                             }
                         }

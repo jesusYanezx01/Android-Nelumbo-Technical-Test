@@ -60,8 +60,7 @@ fun DetailScreen(
     requestId: String?,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
-    val detail by viewModel.detail.collectAsState()
-    val errorState by viewModel.error.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(requestId) {
         if (requestId != null) {
@@ -69,8 +68,8 @@ fun DetailScreen(
         }
     }
 
-    if (errorState != null) {
-        ErrorDialog(errorMessage = errorState ?: stringResource(R.string.unknown_error)) {
+    if (uiState.error != null) {
+        ErrorDialog(errorMessage = uiState.error ?: stringResource(R.string.unknown_error)) {
             navController.popBackStack()
         }
     }
@@ -87,7 +86,7 @@ fun DetailScreen(
                     .background(color = MaterialTheme.colorScheme.onPrimary),
                 contentAlignment = Alignment.Center
             ) {
-                if (detail == null) {
+                if (uiState.detail == null) {
                     CircularProgressIndicator()
                 } else {
                     Column(
@@ -124,7 +123,7 @@ fun DetailScreen(
                                             .padding(horizontal = 8.dp, vertical = 4.dp)
                                     ) {
                                         Text(
-                                            text = detail?.priority?.name ?: stringResource(R.string.n_a),
+                                            text = uiState.detail?.priority?.name ?: stringResource(R.string.n_a),
                                             color = Color.White,
                                             fontSize = 16.sp
                                         )
@@ -147,7 +146,7 @@ fun DetailScreen(
                                             .padding(horizontal = 8.dp, vertical = 4.dp)
                                     ) {
                                         Text(
-                                            text = detail?.status?.description
+                                            text = uiState.detail?.status?.description
                                                 ?: stringResource(R.string.n_a),
                                             color = MaterialTheme.colorScheme.primary,
                                             fontSize = 16.sp
@@ -158,7 +157,7 @@ fun DetailScreen(
                                 Spacer(modifier = Modifier.height(8.dp))
 
                                 Text(
-                                    text = "#${detail?.id} - ${detail?.name ?: stringResource(R.string.n_a)}",
+                                    text = "#${uiState.detail?.id} - ${uiState.detail?.name ?: stringResource(R.string.n_a)}",
                                     color = Color.White,
                                     fontSize = 32.sp,
                                     fontWeight = FontWeight.Bold,
@@ -182,7 +181,7 @@ fun DetailScreen(
                                             .padding(horizontal = 8.dp, vertical = 4.dp)
                                     ) {
                                         Text(
-                                            text = detail?.type ?: stringResource(R.string.n_a),
+                                            text = uiState.detail?.type ?: stringResource(R.string.n_a),
                                             modifier = Modifier.padding(horizontal = 8.dp),
                                             color = Color.White,
                                             fontSize = 16.sp
@@ -238,7 +237,7 @@ fun DetailScreen(
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            text = detail?.description ?: stringResource(R.string.n_a),
+                            text = uiState.detail?.description ?: stringResource(R.string.n_a),
                             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
                         )
                         Spacer(modifier = Modifier.height(8.dp))
@@ -304,8 +303,8 @@ fun DetailScreen(
 
                                 Text(
                                     text = stringResource(R.string.supplier) +
-                                            "${detail?.department?.userManage?.firstName ?: stringResource(R.string.n_a)} " +
-                                            (detail?.department?.userManage?.lastName ?: stringResource(R.string.n_a)),
+                                            "${uiState.detail?.department?.userManage?.firstName ?: stringResource(R.string.n_a)} " +
+                                            (uiState.detail?.department?.userManage?.lastName ?: stringResource(R.string.n_a)),
                                     color = Color(0xFF757575),
                                     fontSize = 18.sp
                                 )

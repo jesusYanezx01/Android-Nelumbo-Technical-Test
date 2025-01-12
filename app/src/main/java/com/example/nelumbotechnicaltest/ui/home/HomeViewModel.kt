@@ -3,7 +3,6 @@ package com.example.nelumbotechnicaltest.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nelumbotechnicaltest.domain.model.Login
-import com.example.nelumbotechnicaltest.domain.model.Request
 import com.example.nelumbotechnicaltest.domain.use_case.FetchRequestUseCase
 import com.example.nelumbotechnicaltest.domain.use_case.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,12 +17,8 @@ class HomeViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
 ) : ViewModel() {
 
-    private val _loginState = MutableStateFlow<Result<Unit>?>(null)
-
-    private val _requests = MutableStateFlow<List<Request>?>(emptyList())
-    val requests: StateFlow<List<Request>?> get() = _requests
-
-    private val _error = MutableStateFlow<String?>(null)
+    private val _uiState = MutableStateFlow(HomeUiState())
+    val uiState: StateFlow<HomeUiState> get() = _uiState
 
     fun login(login: Login) {
         viewModelScope.launch {
@@ -32,8 +27,10 @@ class HomeViewModel @Inject constructor(
             result.onSuccess {
                 loadRequests()
             }.onFailure { exception ->
-                _loginState.value = Result.failure(exception)
-                _error.value = exception.message
+                _uiState.value = _uiState.value.copy(
+                    loginState = Result.failure(exception),
+                    error = exception.message
+                )
             }
         }
     }
@@ -43,11 +40,15 @@ class HomeViewModel @Inject constructor(
             val result = fetchRequestUseCase.execute(6, "DESC")
 
             result.onSuccess { requests ->
-                _requests.value = requests
-                _error.value = null
+                _uiState.value = _uiState.value.copy(
+                    requests = requests,
+                    error = null
+                )
             }.onFailure { exception ->
-                _requests.value = emptyList()
-                _error.value = exception.message
+                _uiState.value = _uiState.value.copy(
+                    requests = emptyList(),
+                    error = exception.message
+                )
             }
         }
     }
