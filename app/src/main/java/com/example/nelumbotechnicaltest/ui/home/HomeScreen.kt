@@ -53,7 +53,6 @@ import com.example.nelumbotechnicaltest.ui.navigation.CustomTopAppBar
 fun HomeScreen(
     navController: NavHostController,
     viewModel: HomeViewModel = hiltViewModel()
-
 ) {
     val requests by viewModel.requests.collectAsState()
 
@@ -76,7 +75,7 @@ fun HomeScreen(
                         .background(color = MaterialTheme.colorScheme.primary),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
-                ){
+                ) {
                     Icon(
                         modifier = Modifier.padding(start = 8.dp),
                         imageVector = Icons.Default.Store,
@@ -103,18 +102,11 @@ fun HomeScreen(
                         .padding(vertical = 4.dp)
                         .drawBehind {
                             val strokeWidth = 1.dp.toPx()
-                            val y =
-                                size.height - strokeWidth / 2
+                            val y = size.height - strokeWidth / 2
                             drawLine(
                                 color = Color.LightGray,
-                                start = Offset(
-                                    0f,
-                                    y
-                                ),
-                                end = Offset(
-                                    size.width,
-                                    y
-                                ),
+                                start = Offset(0f, y),
+                                end = Offset(size.width, y),
                                 strokeWidth = strokeWidth
                             )
                         }
@@ -126,7 +118,6 @@ fun HomeScreen(
                         onClick = { },
                         modifier = Modifier
                             .padding(start = 8.dp, end = 4.dp)
-
                     ) {
                         Text(
                             text = stringResource(R.string.filter_by),
@@ -195,8 +186,7 @@ fun HomeScreen(
                 ) {
                     if (requests.isNullOrEmpty()) {
                         Box(
-                            modifier = Modifier
-                                .fillMaxSize(),
+                            modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
                             CircularProgressIndicator()

@@ -84,9 +84,7 @@ fun DetailScreen(
                 modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()
-                    .background(
-                        color = MaterialTheme.colorScheme.onPrimary,
-                    ),
+                    .background(color = MaterialTheme.colorScheme.onPrimary),
                 contentAlignment = Alignment.Center
             ) {
                 if (detail == null) {
@@ -113,7 +111,7 @@ fun DetailScreen(
                             Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(horizontal = 24.dp, vertical = 16.dp),
+                                    .padding(horizontal = 24.dp, vertical = 16.dp)
                             ) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Box(
@@ -126,8 +124,7 @@ fun DetailScreen(
                                             .padding(horizontal = 8.dp, vertical = 4.dp)
                                     ) {
                                         Text(
-                                            text = detail?.priority?.name
-                                                ?: stringResource(R.string.n_a),
+                                            text = detail?.priority?.name ?: stringResource(R.string.n_a),
                                             color = Color.White,
                                             fontSize = 16.sp
                                         )
@@ -171,8 +168,7 @@ fun DetailScreen(
                                 Spacer(modifier = Modifier.height(8.dp))
 
                                 Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
@@ -201,7 +197,7 @@ fun DetailScreen(
                                             modifier = Modifier.padding(4.dp),
                                             color = Color.White,
                                             fontSize = 16.sp,
-                                            fontWeight = FontWeight.Bold,
+                                            fontWeight = FontWeight.Bold
                                         )
                                         Spacer(modifier = Modifier.width(4.dp))
                                         Icon(
@@ -239,7 +235,7 @@ fun DetailScreen(
                             modifier = Modifier
                                 .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
                             fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
+                            fontWeight = FontWeight.Bold
                         )
                         Text(
                             text = detail?.description ?: stringResource(R.string.n_a),
@@ -272,7 +268,7 @@ fun DetailScreen(
                             Text(
                                 text = stringResource(R.string.history),
                                 fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold,
+                                fontWeight = FontWeight.Bold
                             )
                         }
 
@@ -339,7 +335,7 @@ fun DetailScreen(
                                         containerColor = Color(0xFF1976D2),
                                         contentColor = Color.White,
                                         disabledContainerColor = Color.Unspecified,
-                                        disabledContentColor = Color.Unspecified,
+                                        disabledContentColor = Color.Unspecified
                                     )
                                 ) {
                                     Text(
