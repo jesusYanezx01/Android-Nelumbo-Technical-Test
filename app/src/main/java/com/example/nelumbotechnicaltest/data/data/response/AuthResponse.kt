@@ -1,4 +1,4 @@
-package com.example.nelumbotechnicaltest.data.api_models
+package com.example.nelumbotechnicaltest.data.data.response
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,8 +1,8 @@
-package com.example.nelumbotechnicaltest.data.api_models
+package com.example.nelumbotechnicaltest.data.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class Request(
+data class RequestResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -12,21 +12,21 @@ data class Request(
     @SerializedName("type")
     val type: String?,
     @SerializedName("area")
-    val area: Area?,
+    val area: AreaResponse?,
     @SerializedName("createTime")
     val createTime: String,
     @SerializedName("department")
-    val department: Department?,
+    val department: DepartmentResponse?,
     @SerializedName("priority")
-    val priority: Priority?,
+    val priority: PriorityResponse?,
     @SerializedName("store")
-    val store: Store?,
+    val store: StoreResponse?,
     @SerializedName("status")
-    val status: Status?,
+    val status: StatusResponse?,
     @SerializedName("createdByUser")
-    val createdByUser: User?,
+    val createdByUser: UserResponse?,
     @SerializedName("reportFolioUserAssign")
-    val reportFolioUserAssign: List<User?>?,
+    val reportFolioUserAssign: List<UserResponse?>?,
     @SerializedName("userAttendingId")
     val userAttendingId: Int?,
 )

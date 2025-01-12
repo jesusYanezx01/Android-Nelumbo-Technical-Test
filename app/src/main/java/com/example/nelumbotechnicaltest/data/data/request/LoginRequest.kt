@@ -1,8 +1,8 @@
-package com.example.nelumbotechnicaltest.data.api_models
+package com.example.nelumbotechnicaltest.data.data.request
 
 import com.google.gson.annotations.SerializedName
 
-data class Auth(
+data class LoginRequest(
     @SerializedName("username")
     val username: String,
     @SerializedName("password")

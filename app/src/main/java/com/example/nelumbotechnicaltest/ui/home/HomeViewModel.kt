@@ -2,7 +2,8 @@ package com.example.nelumbotechnicaltest.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nelumbotechnicaltest.data.api_models.Request
+import com.example.nelumbotechnicaltest.domain.model.Login
+import com.example.nelumbotechnicaltest.domain.model.Request
 import com.example.nelumbotechnicaltest.domain.use_case.FetchRequestUseCase
 import com.example.nelumbotechnicaltest.domain.use_case.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,15 +20,14 @@ class HomeViewModel @Inject constructor(
 
     private val _loginState = MutableStateFlow<Result<Unit>?>(null)
 
-    private val _requests = MutableStateFlow<List<Request>>(emptyList())
-    val requests: StateFlow<List<Request>> get() = _requests
+    private val _requests = MutableStateFlow<List<Request>?>(emptyList())
+    val requests: StateFlow<List<Request>?> get() = _requests
 
     private val _error = MutableStateFlow<String?>(null)
 
-    // Credentials on a stick as a test
-    fun login(userName: String = "y.cordoba@nelumbo.com.co", password: String = "Ana1234567") {
+    fun login(login: Login) {
         viewModelScope.launch {
-            val result = loginUseCase.execute(userName, password)
+            val result = loginUseCase.execute(login)
 
             result.onSuccess {
                 loadRequests()

@@ -1,12 +1,12 @@
-package com.example.nelumbotechnicaltest.data.api_models
+package com.example.nelumbotechnicaltest.data.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class UserResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("firstName")
     val firstName: String?,
     @SerializedName("lastName")
-    val lastName: String,
+    val lastName: String?,
 )

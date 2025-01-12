@@ -1,10 +1,10 @@
-package com.example.nelumbotechnicaltest.data.api_models
+package com.example.nelumbotechnicaltest.data.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class Department(
+data class DepartmentResponse(
     @SerializedName("name")
     val name: String,
     @SerializedName("userManage")
-    val userManage: User?
+    val userManage: UserResponse?
 )

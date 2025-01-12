@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.nelumbotechnicaltest.R
+import com.example.nelumbotechnicaltest.domain.model.Login
 import com.example.nelumbotechnicaltest.ui.common.components.RequestItem
 import com.example.nelumbotechnicaltest.ui.navigation.CustomBottomApp
 import com.example.nelumbotechnicaltest.ui.navigation.CustomTopAppBar
@@ -57,7 +58,7 @@ fun HomeScreen(
     val requests by viewModel.requests.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.login()
+        viewModel.login(login = Login())
     }
 
     Scaffold(
@@ -192,7 +193,7 @@ fun HomeScreen(
                         .fillMaxSize()
                         .padding(horizontal = 16.dp)
                 ) {
-                    if (requests.isEmpty()) {
+                    if (requests.isNullOrEmpty()) {
                         Box(
                             modifier = Modifier
                                 .fillMaxSize(),
@@ -202,7 +203,7 @@ fun HomeScreen(
                         }
                     } else {
                         LazyColumn(modifier = Modifier.fillMaxSize()) {
-                            items(requests) { request ->
+                            items(requests!!) { request ->
                                 RequestItem(request = request, navController = navController)
                             }
                         }
