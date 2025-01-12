@@ -44,11 +44,8 @@ fun RequestItem(request: Request, navController: NavController) {
 
     Card(
         modifier = Modifier
-            .padding(horizontal = 32.dp, vertical = 16.dp)
-            .shadow(
-                elevation = 4.dp,
-                shape = RoundedCornerShape(4.dp)
-            ),
+            .padding(horizontal = 32.dp, vertical = 16.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.onPrimary
         )
