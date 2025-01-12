@@ -308,7 +308,6 @@ fun DetailScreen(
 
                                 Text(
                                     text = stringResource(R.string.supplier) +
-                                            "${detail?.department?.name ?: stringResource(R.string.n_a)} " +
                                             "${detail?.department?.userManage?.firstName ?: stringResource(R.string.n_a)} " +
                                             (detail?.department?.userManage?.lastName ?: stringResource(R.string.n_a)),
                                     color = Color(0xFF757575),
