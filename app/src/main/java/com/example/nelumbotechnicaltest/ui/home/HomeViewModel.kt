@@ -23,7 +23,6 @@ class HomeViewModel @Inject constructor(
     val requests: StateFlow<List<Request>> get() = _requests
 
     private val _error = MutableStateFlow<String?>(null)
-    val error: StateFlow<String?> get() = _error
 
     // Credentials on a stick as a test
     fun login(userName: String = "y.cordoba@nelumbo.com.co", password: String = "Ana1234567") {
