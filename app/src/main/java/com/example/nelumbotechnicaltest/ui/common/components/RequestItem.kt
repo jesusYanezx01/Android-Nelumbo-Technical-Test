@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.nelumbotechnicaltest.R
-import com.example.nelumbotechnicaltest.data.models.Request
+import com.example.nelumbotechnicaltest.data.api_models.Request
 import com.example.nelumbotechnicaltest.domain.helpers.AppTimeUtil
 import com.example.nelumbotechnicaltest.ui.navigation.Screens
 

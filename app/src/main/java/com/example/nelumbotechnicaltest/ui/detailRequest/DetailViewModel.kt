@@ -2,7 +2,7 @@ package com.example.nelumbotechnicaltest.ui.detailRequest
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nelumbotechnicaltest.data.models.Request
+import com.example.nelumbotechnicaltest.data.api_models.Request
 import com.example.nelumbotechnicaltest.domain.use_case.FetchDetailRequestUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

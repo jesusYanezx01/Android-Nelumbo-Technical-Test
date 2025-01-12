@@ -1,6 +1,6 @@
 package com.example.nelumbotechnicaltest.data.remoteDataSource.request
 
-import com.example.nelumbotechnicaltest.data.models.Request
+import com.example.nelumbotechnicaltest.data.api_models.Request
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

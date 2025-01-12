@@ -2,7 +2,7 @@ package com.example.nelumbotechnicaltest.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nelumbotechnicaltest.data.models.Request
+import com.example.nelumbotechnicaltest.data.api_models.Request
 import com.example.nelumbotechnicaltest.domain.use_case.FetchRequestUseCase
 import com.example.nelumbotechnicaltest.domain.use_case.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

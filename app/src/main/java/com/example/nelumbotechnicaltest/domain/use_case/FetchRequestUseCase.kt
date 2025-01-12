@@ -1,6 +1,6 @@
 package com.example.nelumbotechnicaltest.domain.use_case
 
-import com.example.nelumbotechnicaltest.data.models.Request
+import com.example.nelumbotechnicaltest.data.api_models.Request
 import com.example.nelumbotechnicaltest.domain.boundary.RequestRepository
 import com.example.nelumbotechnicaltest.domain.helpers.CoroutineExecutor
 import javax.inject.Inject

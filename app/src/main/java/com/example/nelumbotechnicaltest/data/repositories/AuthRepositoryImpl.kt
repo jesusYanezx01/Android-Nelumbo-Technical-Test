@@ -1,7 +1,7 @@
 package com.example.nelumbotechnicaltest.data.repositories
 
 import com.example.nelumbotechnicaltest.data.localDataSource.auth.AuthLocalDataSource
-import com.example.nelumbotechnicaltest.data.models.AuthResponse
+import com.example.nelumbotechnicaltest.data.api_models.AuthResponse
 import com.example.nelumbotechnicaltest.data.remoteDataSource.auth.AuthRemoteDataSource
 import com.example.nelumbotechnicaltest.domain.boundary.AuthRepository
 import retrofit2.Response

@@ -1,7 +1,7 @@
 package com.example.nelumbotechnicaltest.data.remoteDataSource.auth
 
-import com.example.nelumbotechnicaltest.data.models.Auth
-import com.example.nelumbotechnicaltest.data.models.AuthResponse
+import com.example.nelumbotechnicaltest.data.api_models.Auth
+import com.example.nelumbotechnicaltest.data.api_models.AuthResponse
 import retrofit2.Response
 import javax.inject.Inject
 

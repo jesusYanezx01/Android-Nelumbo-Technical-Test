@@ -1,6 +1,6 @@
 package com.example.nelumbotechnicaltest.domain.boundary
 
-import com.example.nelumbotechnicaltest.data.models.AuthResponse
+import com.example.nelumbotechnicaltest.data.api_models.AuthResponse
 import retrofit2.Response
 
 interface AuthRepository{
