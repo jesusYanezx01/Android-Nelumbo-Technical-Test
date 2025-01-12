@@ -71,5 +71,8 @@ dependencies {
     implementation(libs.kotlin.reflect.v1922)
     implementation(libs.jwtdecode)
     implementation(libs.androidx.material.icons.extended.v167)
+    testImplementation(libs.mockk)
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.7.6")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.7.6")
     coreLibraryDesugaring(libs.desugar.jdk.libs.v204)
 }
